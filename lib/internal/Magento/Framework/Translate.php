@@ -311,7 +311,8 @@ class Translate implements \Magento\Framework\TranslateInterface
     protected function _addData($data)
     {
         foreach ($data as $key => $value) {
-            if ($key === $value) {
+            if ((!isset($this->_data[$key]) && $key === $value)
+                || (isset($this->_data[$key]) && $this->_data[$key] === $value)) {
                 continue;
             }
 
